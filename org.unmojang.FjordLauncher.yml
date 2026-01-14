@@ -1,6 +1,6 @@
 id: org.unmojang.FjordLauncher
 runtime: org.kde.Platform
-runtime-version: '6.8'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.openjdk17
@@ -27,6 +27,9 @@ finish-args:
   - --filesystem=/sys/kernel/mm/transparent_hugepage:ro
 
 modules:
+  - cmark.yml
+  - tomlplusplus.yml
+
   # Might be needed by some Controller mods (see https://github.com/isXander/Controlify/issues/31)
   - shared-modules/libusb/libusb.json
 
@@ -34,6 +37,7 @@ modules:
   - libdecor.json
 
   # Text to Speech in the game
+  # /w patch for pipewire
   - flite.json
 
   - name: fjordlauncher
@@ -50,8 +54,8 @@ modules:
         JAVA_COMPILER: /usr/lib/sdk/openjdk17/jvm/openjdk-17/bin/javac
     sources:
       - type: archive
-        url: https://github.com/hero-persson/FjordLauncherUnlocked/releases/download/9.4.0/FjordLauncher-9.4.0.tar.gz
-        sha256: 89a09d99e790811da797917409703691f09aa041c7a653329c9a28774b698bdf
+        url: https://github.com/hero-persson/FjordLauncherUnlocked/releases/download/10.0.2.0/FjordLauncher-10.0.2.0.tar.gz
+        sha256: 12094cdf49f23b97f5f506533881b6d9c44bf9d1d029aad90a28d5cfe0ac7267
         x-checker-data:
           type: json
           url: https://api.github.com/repos/hero-persson/FjordLauncherUnlocked/releases/latest
@@ -71,7 +75,11 @@ modules:
         url: https://github.com/glfw/glfw.git
         commit: 7b6aead9fb88b3623e3b3725ebb42670cbe4c579 # 3.4
       - type: patch
-        path: patches/0009-Defer-setting-cursor-position-until-the-cursor-is-lo.patch
+        path: patches/0001-Wayland-Partially-implement-glfwSetCursorPos.patch
+      - type: patch
+        path: patches/0002-Wayland-Implement-glfwSetWindowIcon.patch
+      - type: patch
+        path: patches/0003-proceed-even-though-no-window-icon-support-on-waylan.patch
     cleanup:
       - /include
       - /lib/cmake
