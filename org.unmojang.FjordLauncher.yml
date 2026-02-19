@@ -30,9 +30,6 @@ modules:
   - cmark.yml
   - tomlplusplus.yml
 
-  # Might be needed by some Controller mods (see https://github.com/isXander/Controlify/issues/31)
-  - shared-modules/libusb/libusb.json
-
   # Needed for proper Wayland support
   - libdecor.json
 
@@ -54,8 +51,8 @@ modules:
         JAVA_COMPILER: /usr/lib/sdk/openjdk17/jvm/openjdk-17/bin/javac
     sources:
       - type: archive
-        url: https://github.com/hero-persson/FjordLauncherUnlocked/releases/download/10.0.2.0/FjordLauncher-10.0.2.0.tar.gz
-        sha256: 12094cdf49f23b97f5f506533881b6d9c44bf9d1d029aad90a28d5cfe0ac7267
+        url: https://github.com/hero-persson/FjordLauncherUnlocked/releases/download/10.0.5.0/FjordLauncher-10.0.5.0.tar.gz
+        sha256: 4c0ff64ae35a2b0a5a25033a83099b50042ca81cb966143b1f65aaf00eec1169
         x-checker-data:
           type: json
           url: https://api.github.com/repos/hero-persson/FjordLauncherUnlocked/releases/latest
